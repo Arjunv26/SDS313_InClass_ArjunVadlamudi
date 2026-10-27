@@ -1,0 +1,40 @@
+---
+title: "SDS313_InClass_ArjunVadlamudi"
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+
+```
+
+```{r}
+glimpse(penguins)
+```
+
+```{r}
+bill_summary <- penguins %>%
+  group_by(species) %>%
+  summarize(
+    avg_bill_length = mean(bill_length_mm, na.rm = TRUE),
+    count = n()
+  )
+
+bill_summary
+```
+
+```{r}
+ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g, color = species)) +   
+  geom_point(alpha = 0.8) +
+  labs(
+    title = "Flipper Length vs. Body Mass in Penguin Species",
+    x = "Flipper Length",
+    y = "Body Mass", 
+    color = "Species"
+  ) +
+  theme_minimal()
+```
